@@ -1,10 +1,10 @@
 import java.io.Serializable;
 
-public class InputData implements Serializable, Result {
+public class Convert implements Serializable, Result {
 
 	private String inputString;
 
-	public InputData(String inputString) {
+	public Convert(String inputString) {
 		this.inputString = inputString;
 	}
 

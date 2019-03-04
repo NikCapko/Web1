@@ -1,28 +1,39 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server {
+
+	private static ServerSocket serverSocket;
+	private static Socket socket;
+	private static BufferedReader in;
+	private static BufferedWriter out;
+
 	public static void main(String[] args) {
 		System.out.println("Server start...");
 		try {
-			ServerSocket serverSocket = new ServerSocket(12345);
-			Socket socket = serverSocket.accept();
+			serverSocket = new ServerSocket(12345);
+			socket = serverSocket.accept();
 			
-			BufferedReader fromClient = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-	        String line = fromClient.readLine();
-	        
-	        InputData input = new InputData(line);
-	        
-	        PrintWriter toClient = new PrintWriter(socket.getOutputStream(), true);
-	        toClient.println(input.getResult());
+			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+
+			String number = in.readLine();
+	        Convert convert = new Convert(number);
+			
+			out.write(convert.getResult() + "\n");
+	        out.flush();
 	        
 			//System.out.println(input.getResult());
-	        
+
+			socket.close();
+			in.close();
+			out.close();
 			serverSocket.close();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
