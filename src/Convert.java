@@ -1,6 +1,4 @@
-import java.io.Serializable;
-
-public class Convert implements Serializable, Result {
+public class Convert implements Result {
 
 	private String inputString;
 
