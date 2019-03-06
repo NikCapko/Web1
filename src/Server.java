@@ -15,7 +15,7 @@ public class Server {
 	public static void main(String[] args) {
 		System.out.println("Server start...");
 		try {
-			serverSocket = new ServerSocket(12345);
+			serverSocket = new ServerSocket(12345, 1);
 			socket = serverSocket.accept();
 			
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
