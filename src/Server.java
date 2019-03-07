@@ -17,18 +17,18 @@ public class Server {
 		try {
 			serverSocket = new ServerSocket(12345, 1);
 			socket = serverSocket.accept();
-			
+
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-
-			String number = in.readLine();
-	        Convert convert = new Convert(number);
-			
-			out.write(convert.getResult() + "\n");
-	        out.flush();
-	        
-			//System.out.println(input.getResult());
-
+			while (true) {
+				String number = in.readLine();
+				if (number.equals("exit")) {
+					break;
+				}
+				Convert convert = new Convert(number);
+				out.write(convert.getResult() + "\n");
+				out.flush();
+			}
 			socket.close();
 			in.close();
 			out.close();
@@ -37,7 +37,7 @@ public class Server {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		System.out.println("Server stop...");
 	}
 }
