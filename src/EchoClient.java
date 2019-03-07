@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
 
-public class Client {
+public class EchoClient {
     private static Socket socket;
     private static BufferedReader reader;
     private static BufferedReader in;

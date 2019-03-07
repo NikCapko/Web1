@@ -5,7 +5,7 @@ import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Server {
+public class EchoServer {
     private static ServerSocket serverSocket;
     private static Socket socket;
     private static BufferedReader in;
