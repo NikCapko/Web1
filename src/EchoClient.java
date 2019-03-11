@@ -17,6 +17,7 @@ public class EchoClient {
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
             while (true) {
+            	System.out.print("Введите сообщение: ");
                 String clientString = reader.readLine();
                 out.write(clientString + "\n");
                 out.flush();

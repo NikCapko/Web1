@@ -24,9 +24,11 @@ public class EchoServer {
 
             while (true) {
                 s = in.readLine();
+                System.out.println("Получено " + s);
                 if (s.equals("exit")) {
                     break;
                 }
+                System.out.println("Отправлено " + s);
                 out.write(s + "\n");
                 out.flush();
             }

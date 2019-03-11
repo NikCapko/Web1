@@ -22,10 +22,12 @@ public class Server {
 			out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 			while (true) {
 				String number = in.readLine();
+				System.out.println("Получено " + number);
 				if (number.equals("exit")) {
 					break;
 				}
 				Convert convert = new Convert(number);
+				System.out.println("Отправлено " + convert.getResult());
 				out.write(convert.getResult() + "\n");
 				out.flush();
 			}
